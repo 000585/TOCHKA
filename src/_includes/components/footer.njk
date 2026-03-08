@@ -1,0 +1,24 @@
+﻿<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-info">
+      <span class="footer-logo">{{ site.shortName }}</span>
+      <p>&copy; 2026 {{ site.name }}. Все права защищены.</p>
+    </div>
+    
+    <nav aria-label="Footer Navigation" class="footer-nav">
+      <ul class="footer-links">
+        {% for item in navigation.footer %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    
+    <div class="social-links">
+      {% for social in navigation.social %}
+      <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
+        {{ social.name }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</footer>

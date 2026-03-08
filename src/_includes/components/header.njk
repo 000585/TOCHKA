@@ -1,0 +1,18 @@
+﻿<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">{{ site.shortName }}</a>
+    
+    <nav aria-label="Main Navigation" class="main-nav">
+      <ul class="nav-links">
+        {% for item in navigation.main %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    
+    <div class="header-controls">
+      <button id="theme-toggle" aria-label="Переключить тему" class="theme-btn">🌓</button>
+      <button id="mobile-menu-btn" aria-label="Открыть меню" class="mobile-btn">☰</button>
+    </div>
+  </div>
+</header>

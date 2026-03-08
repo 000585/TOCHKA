@@ -1,0 +1,7 @@
+﻿{
+  "layout": "layouts/article.njk",
+  "permalink": "/news/{{ page.fileSlug }}/index.html",
+  "chudo_tx_hash": null,
+  "chudo_notarized": false,
+  "chudo_notarized_at": null
+}

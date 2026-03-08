@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang='{{ site.language }}' data-theme='dark'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.name }}</title>
+  <meta name='description' content='{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}'>
+  <meta name='author' content='{{ site.author }}'>
+  <link rel='canonical' href='{{ site.url }}{{ page.url }}'>
+  <meta property='og:title' content='{% if title %}{{ title }}{% else %}{{ site.name }}{% endif %}'>
+  <meta property='og:description' content='{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}'>
+  <meta property='og:type' content='{% if layout == 'layouts/article.njk' %}article{% else %}website{% endif %}'>
+  <link rel='stylesheet' href='/assets/css/main.css'>
+  <link rel='stylesheet' href='/assets/css/header.css'>
+</head>
+<body>
+  <a href='#main-content' class='skip-link'>Перейти к содержимому</a>
+  {% include 'components/header.njk' %}
+  <main id='main-content'>{{ content | safe }}</main>
+  {% include 'components/footer.njk' %}
+  <script src='/assets/js/main.js' defer></script>
+  <script src='/assets/js/theme.js' defer></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿---
+layout: layouts/base.njk
+title: "Главная"
+---
+<section class="hero-section">
+  <div class="container">
+    <h1 class="hero-title">{{ site.name }}</h1>
+    <p class="hero-subtitle">{{ site.description }}</p>
+  </div>
+</section>
+
+<section class="latest-news-section container">
+  <div class="section-header">
+    <h2>Последние публикации</h2>
+    <a href="/news/" class="btn-link">Все новости →</a>
+  </div>
+  
+  <div class="news-grid">
+    {% set latest_news = collections.news | slice(0, 6) %}
+    {% for article in latest_news %}
+      <article class="news-card">
+        <div class="news-card-content">
+          <time datetime="{{ article.date | dateFormat }}" class="news-date">{{ article.date | dateFormat }}</time>
+          <h3 class="news-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
+          <p class="news-excerpt">{{ article.templateContent | excerpt }}</p>
+        </div>
+        <div class="news-card-footer">
+          {% if article.data.chudo_notarized %}<span class="badge badge-chudo" title="Заверено в CHUDO Blockchain">⛓️ Notarized</span>{% endif %}
+          {% if article.data.ai_enhanced %}<span class="badge badge-ai" title="Улучшено AI">🤖 AI</span>{% endif %}
+        </div>
+      </article>
+    {% else %}
+      <p>Новостей пока нет.</p>
+    {% endfor %}
+  </div>
+</section>

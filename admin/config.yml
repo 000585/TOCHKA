@@ -1,0 +1,62 @@
+﻿backend:
+  name: github
+  repo: chudzinovich/cec-news-platform
+  branch: main
+  squash_merges: true
+
+media_folder: "src/assets/img"
+public_folder: "/assets/img"
+
+site_url: https://cik-chudzinovich.netlify.app
+display_url: https://cik-chudzinovich.netlify.app
+logo_url: https://cik-chudzinovich.netlify.app/assets/img/logo.png
+
+collections:
+  - name: "news"
+    label: "Новости"
+    folder: "src/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "news/{{slug}}"
+    sortable_fields: ['date', 'title']
+    view_filters:
+      - label: "Черновики"
+        field: draft
+        pattern: true
+      - label: "Опубликованные"
+        field: draft
+        pattern: false
+      - label: "AI-улучшенные"
+        field: ai_enhanced
+        pattern: true
+      - label: "Требуют проверки"
+        field: requires_review
+        pattern: true
+      - label: "CHUDO Notarized"
+        field: chudo_notarized
+        pattern: true
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: true}
+      - {label: "Дата публикации", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: true}
+      - {label: "Описание", name: "description", widget: "text", required: false}
+      - {label: "Теги", name: "tags", widget: "list", default: ["новости"], required: false}
+      - {label: "Автор", name: "author", widget: "string", default: "ЦИК", required: false}
+      - {label: "Изображение", name: "image", widget: "image", required: false}
+      - {label: "Черновик", name: "draft", widget: "boolean", default: true, hint: "Черновики не публикуются"}
+      - {label: "AI-улучшено", name: "ai_enhanced", widget: "boolean", default: false}
+      - {label: "Требует проверки", name: "requires_review", widget: "boolean", default: false}
+      - {label: "CHUDO Notarized", name: "chudo_notarized", widget: "boolean", default: false, hint: "Записано в блокчейн CHUDO"}
+      - {label: "CHUDO TX Hash", name: "chudo_tx_hash", widget: "string", required: false, hint: "Хеш транзакции в блокчейне"}
+      - {label: "CHUDO Notarized At", name: "chudo_notarized_at", widget: "datetime", required: false}
+      - {label: "Telegram ID", name: "telegram_id", widget: "number", required: false}
+      - {label: "Содержимое", name: "body", widget: "markdown", required: true}
+
+  - name: "pages"
+    label: "Страницы"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Описание", name: "description", widget: "text"}
+      - {label: "Содержимое", name: "body", widget: "markdown"}

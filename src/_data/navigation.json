@@ -1,0 +1,19 @@
+﻿{
+  "main": [
+    { "url": "/", "title": "Главная" },
+    { "url": "/news/", "title": "Новости" },
+    { "url": "/pages/about.html", "title": "О комиссии" },
+    { "url": "/pages/commission.html", "title": "Состав" },
+    { "url": "/pages/elections.html", "title": "Выборы" },
+    { "url": "/pages/contact.html", "title": "Контакты" }
+  ],
+  "footer": [
+    { "url": "/pages/privacy.html", "title": "Политика конфиденциальности" },
+    { "url": "/pages/terms.html", "title": "Условия использования" },
+    { "url": "/pages/donate.html", "title": "Поддержать проект" }
+  ],
+  "social": [
+    { "name": "Telegram", "url": "https://t.me/cik_news", "icon": "telegram" },
+    { "name": "GitHub", "url": "https://github.com/chudzinovich", "icon": "github" }
+  ]
+}
