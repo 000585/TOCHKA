@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.shortName }}</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <style>
+    .social-link-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--bg-primary); border: 1px solid var(--border-color);
+      transition: all 0.3s ease; color: var(--text-primary);
+    }
+    .social-link-icon:hover {
+      border-color: var(--accent-color); color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+    .social-link-icon svg { width: 20px; height: 20px; fill: currentColor; }
+  </style>
+</head>
+<body >
+  {% include "components/header.njk" %}
+
+
+  <main class="page-content">
+    {{ content | safe }}
+  </main>
+
+  {% include "components/footer.njk" %}
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
+

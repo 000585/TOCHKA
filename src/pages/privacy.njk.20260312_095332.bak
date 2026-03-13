@@ -1,0 +1,62 @@
+---
+layout: base.njk
+title: Отказ от ответственности
+permalink: /privacy/
+---
+
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden;">
+    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+        <source src="/assets/img/promo.mp4" type="video/mp4">
+    </video>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(3px);"></div>
+</div>
+
+<div class="relative z-10 max-w-4xl mx-auto py-12 px-6">
+    
+    <div class="inline-block px-4 py-1 mb-6 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-mono tracking-widest uppercase shadow-[0_0_10px_rgba(239,68,68,0.2)]">
+        LEGAL.DISCLAIMER // ПРЕДУПРЕЖДЕНИЕ
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] uppercase">
+        Отказ от <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">ответственности</span>
+    </h1>
+
+    <div class="glass-panel rounded-xl border border-white/10 p-8 mb-8 relative overflow-hidden bg-black/50 backdrop-blur-md">
+        <div class="absolute left-0 top-0 w-1 h-full bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.8)]"></div>
+        <h2 class="text-2xl font-bold text-white mb-4">1. Статус платформы и контент</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+            Платформа «ДЕЛ» (Точка Невозврата) является децентрализованным информационным агрегатором и технической инфраструктурой. <strong>Разработчики, администраторы и владельцы хостинга не несут никакой юридической или иной ответственности за материалы, публикуемые на данном ресурсе.</strong>
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-4">
+            Вся информация, статьи, новости и документы предоставляются исключительно в ознакомительных целях («как есть»). Ответственность за содержание материалов, их достоверность и последствия их использования лежит исключительно на авторах публикаций и самих пользователях.
+        </p>
+    </div>
+
+    <div class="glass-panel rounded-xl border border-white/10 p-8 mb-8 relative overflow-hidden bg-black/50 backdrop-blur-md">
+        <div class="absolute left-0 top-0 w-1 h-full bg-cyan-500 shadow-[0_0_15px_rgba(0,255,255,0.8)]"></div>
+        <h2 class="text-2xl font-bold text-white mb-4">2. Цифровая гигиена и Zero Logs</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+            Учитывая реалии политического преследования, ваша безопасность — это ваша личная ответственность. Администрация не гарантирует абсолютную защиту ваших данных при использовании сторонних узлов связи.
+        </p>
+        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-4">
+            <li>Мы не ведем логирование (Zero Logs). IP-адреса и сессии не сохраняются.</li>
+            <li>Используйте сеть CHUDO и надежные VPN-сервисы.</li>
+            <li>Никогда не передавайте свои реальные личные данные через открытые каналы.</li>
+        </ul>
+    </div>
+
+    <div class="glass-panel rounded-xl border border-white/10 p-8 mb-8 relative overflow-hidden bg-black/50 backdrop-blur-md">
+        <div class="absolute left-0 top-0 w-1 h-full bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.8)]"></div>
+        <h2 class="text-2xl font-bold text-white mb-4">3. Финансовые операции (KRC-20)</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+            Платформа не является финансовой организацией. Все транзакции, пожертвования и переводы осуществляются пользователями добровольно через децентрализованные смарт-контракты. Администрация не имеет доступа к кошелькам и не может отменить транзакции в блокчейне.
+        </p>
+    </div>
+
+    <div class="mt-12 text-center">
+        <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-red-500/50 text-red-400 hover:bg-red-500/10 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transition-all font-mono text-sm uppercase">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Вернуться на Главную
+        </a>
+    </div>
+</div>

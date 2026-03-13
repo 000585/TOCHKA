@@ -1,0 +1,53 @@
+﻿<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">{{ site.shortName }}</a>
+    
+    <nav aria-label="Main Navigation" class="main-nav">
+      <ul class="nav-links">
+        {% for item in navigation.main %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+<button class='desktop-burger-btn' onclick='toggleSideMenu()'>☰</button>
+
+    
+    <div class="header-controls">
+      <button id="theme-toggle" aria-label="Переключить тему" class="theme-btn">🌓</button>
+      <button id="mobile-menu-btn" aria-label="Открыть меню" class="mobile-btn">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="side-panel-overlay" onclick="toggleSideMenu()"></div>
+
+<div class="desktop-side-panel">
+    <button class="close-panel-btn" onclick="toggleSideMenu()">×</button>
+    <h2>Все разделы</h2>
+    
+    <h3>О проекте</h3>
+    <ul>
+        <li><a href="/about/">История</a></li>
+        <li><a href="/team/">Наша команда</a></li>
+    </ul>
+
+    <h3>Кампании и проекты</h3>
+    <ul>
+        <li><a href="/elections-2025/">Выборы 2025</a></li>
+        <li><a href="/monitoring/">Мониторинг</a></li>
+        <li><a href="/analytics/">Аналитика</a></li>
+    </ul>
+    
+    <h3>Медиа</h3>
+    <ul>
+        <li><a href="/podcasts/">Подкасты</a></li>
+        <li><a href="/video/">Видео</a></li>
+    </ul>
+</div>
+
+<script>
+    function toggleSideMenu() {
+        document.querySelector('.desktop-side-panel').classList.toggle('active');
+        document.querySelector('.side-panel-overlay').classList.toggle('active');
+    }
+</script>

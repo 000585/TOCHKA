@@ -1,0 +1,30 @@
+﻿
+/* --- Плавная переливающаяся голограмма для логотипа --- */
+.site-header .logo {
+    position: relative;
+    /* Создаем градиент как в вашем коде .holo-text */
+    background: linear-gradient(90deg, #00f260, #0575e6, #f200cb, #00f260);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Плавная анимация перелива без моргания */
+    animation: smooth-holo 4s linear infinite;
+    font-weight: 900;
+    letter-spacing: 2px;
+    display: inline-block;
+    /* Легкое статичное свечение для объема */
+    filter: drop-shadow(0 0 5px rgba(5, 117, 230, 0.3));
+}
+
+/* Анимация плавного движения градиента */
+@keyframes smooth-holo {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Усиление эффекта при наведении */
+.site-header .logo:hover {
+    filter: drop-shadow(0 0 10px rgba(242, 0, 203, 0.6));
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}

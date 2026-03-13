@@ -1,29 +1,695 @@
-﻿:root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --accent-color: #D22730;
-  --card-bg: #f9f9f9;
+﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap");
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #111111;
+  --text-secondary: #666666;
+  --accent-color: #d4af37; /* Благородное золото */
+  --accent-hover: #bda030;
+  --border-color: #e5e5e5;
+  --shadow-color: rgba(0, 0, 0, 0.05);
 }
 
 [data-theme='dark'] {
-  --bg-color: #0b1120;
-  --text-color: #f3f4f6;
-  --accent-color: #e53e3e;
-  --card-bg: #1f2937;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #d4af37; /* Золото роскошно смотрится и в темной теме */
+  --accent-hover: #f5e7b2;
+  --border-color: #333333;
+  --shadow-color: rgba(212, 175, 55, 0.1);
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: system-ui, -apple-system, sans-serif;
-  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-a { color: var(--accent-color); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.skip-link { position: absolute; top: -40px; left: 0; background: var(--accent-color); color: white; padding: 8px; z-index: 100; }
-.skip-link:focus { top: 0; }
-.page-content, .article-content { padding: 2rem 0; }
+h1, h2, h3, h4, .logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+a { text-decoration: none; color: var(--text-primary); transition: color 0.3s ease; }
+a:hover { color: var(--accent-color); }
+
+/* Заголовки секций с подчеркиванием */
+.section-title {
+  font-size: 2rem; margin: 3rem 0 2rem; position: relative; padding-bottom: 1rem;
+}
+.section-title::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 3px; background-color: var(--accent-color);
+}
+
+/* Hero-секция */
+.hero { margin: 3rem 0; }
+.hero__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.hero__main {
+  position: relative; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 10px 30px var(--shadow-color); background: var(--bg-secondary);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 400px; padding: 2.5rem; border: 1px solid var(--border-color);
+}
+.hero__badge {
+  display: inline-block; background-color: var(--accent-color); color: #000;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  padding: 0.3rem 1rem; border-radius: 30px; margin-bottom: 1rem; align-self: flex-start;
+}
+.hero__title { font-size: 2.5rem; margin-bottom: 1rem; }
+.hero__secondary { display: flex; flex-direction: column; gap: 1.5rem; }
+.hero__card {
+  display: flex; gap: 1.5rem; align-items: center; background: var(--bg-secondary);
+  border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border-color);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.hero__card:hover {
+  transform: translateY(-4px); box-shadow: 0 15px 30px var(--shadow-color); border-color: var(--accent-color);
+}
+.hero__card-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+/* Сетка обычных новостей */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.news-card {
+  background: var(--bg-secondary); border-radius: 12px; padding: 1.8rem;
+  border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column;
+}
+.news-card:hover {
+  border-color: var(--accent-color); transform: translateY(-6px); box-shadow: 0 20px 30px var(--shadow-color);
+}
+.news-card__meta {
+  display: flex; justify-content: space-between; font-size: 0.85rem;
+  color: var(--text-secondary); border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto;
+}
+
+@media (max-width: 1024px) { .hero__grid { grid-template-columns: 1fr; } }
+
+/* Блок "Самое читаемое" (взято из Daily Pulse) */
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 4rem;
+}
+
+.popular-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.popular-item:hover {
+  border-color: var(--accent-color);
+  background: var(--bg-primary);
+  transform: translateX(5px);
+  box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.popular-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1;
+  min-width: 50px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.popular-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+
+/* --- ФИКС АДАПТИВНОСТИ: УБИРАЕМ БЕЛЫЕ ПОЛОСЫ И ВЫРАВНИВАЕМ ПОДВАЛ --- */
+html, body {
+    overflow-x: hidden; /* Жестко запрещаем сайту раздвигаться вширь */
+    width: 100%;
+    max-width: 100vw;
+}
+
+.site-footer {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Обрезаем всё, что пытается вылезти за края футера */
+}
+
+/* Перестройка блоков подвала для экранов телефонов */
+@media (max-width: 768px) {
+    .site-footer .container > div {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 1.5rem !important;
+    }
+    
+    .site-footer .container > div > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: left !important;
+    }
+
+    /* Растягиваем форму подписки на всю ширину экрана */
+    .site-footer input[type="email"],
+    .site-footer button {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 5px;
+    }
+    
+    /* Соцсети выстраиваем компактно */
+    .site-footer .social-link-icon {
+        margin-bottom: 5px;
+    }
+}
+
+/* --- ФИКС: СОЦСЕТИ В ОДИН РЯД НА МОБИЛЬНЫХ УСТРОЙСТВАХ --- */
+@media (max-width: 768px) {
+    /* Находим контейнер, внутри которого лежат иконки, и выстраиваем в строку */
+    .site-footer div:has(> .social-link-icon) {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important; /* Жестко в один ряд */
+        justify-content: flex-start !important; /* Прижимаем к левому краю, как текст */
+        gap: 0.6rem !important; /* Чуть уменьшаем отступ, чтобы точно влезли все */
+        overflow-x: auto; /* На очень узких экранах можно будет прокрутить пальцем */
+        padding-bottom: 5px;
+    }
+    
+    /* Запрещаем иконкам деформироваться */
+    .site-footer .social-link-icon {
+        flex: 0 0 auto !important;
+        width: 38px !important; /* Чуть компактнее для телефона */
+        height: 38px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .site-footer .social-link-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+}
+
+/* --- ФИКС: ФОРМА ПОДПИСКИ СТОЛБИКОМ НА МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+    /* Находим контейнер с полем email и превращаем его в колонку */
+    .site-footer div:has(> input[type="email"]) {
+        flex-direction: column !important;
+        gap: 10px !important; /* Аккуратный отступ между полем и кнопкой */
+    }
+    
+    /* Поле ввода почты: сверху, на всю ширину */
+    .site-footer input[type="email"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 45px !important; /* Удобный размер, чтобы не промахнуться пальцем */
+        font-size: 16px !important; /* Защита от авто-зума на iPhone */
+        margin: 0 !important;
+    }
+    
+    /* Кнопка "Подписаться": снизу, во всю ширину */
+    .site-footer button:has(string("Подписаться")), 
+    .site-footer button {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 45px !important;
+        margin: 0 !important;
+    }
+}
+
+/* --- ФИКС: ШИРОКАЯ КНОПКА ПОДПИСКИ НА МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+    .site-footer button {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        padding: 15px 0 !important; /* Делаем кнопку повыше для пальца */
+        font-size: 1rem !important; /* Чуть крупнее текст */
+        text-align: center !important;
+        box-sizing: border-box !important;
+        margin-top: 10px !important;
+    }
+}
+
+/* --- ЗОЛОТАЯ ГОЛОГРАММА ДЛЯ ЛОГОТИПА В ПОДВАЛЕ --- */
+.site-footer .logo {
+    /* Перебиваем инлайн-стиль золотым переливающимся градиентом */
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFF8DC, #FFD700) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    
+    /* Та самая плавная анимация из шапки */
+    animation: smooth-holo 4s linear infinite !important;
+    
+    /* Элегантное золотое свечение */
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Усиливаем свечение при наведении мыши */
+.site-footer .logo:hover {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)) !important;
+    transform: scale(1.02) !important;
+}
+
+/* --- ЗОЛОТАЯ ГОЛОГРАММА ДЛЯ КНОПКИ ПОДПИСКИ В ПОДВАЛЕ --- */
+.site-footer button {
+    /* Тот самый переливающийся золотой фон */
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFF8DC, #FFD700) !important;
+    background-size: 200% auto !important;
+    
+    /* Анимация перелива */
+    animation: smooth-holo 4s linear infinite !important;
+    
+    /* Внешний вид кнопки */
+    color: #000 !important; /* Черный жирный текст для читаемости */
+    font-weight: 900 !important;
+    border: none !important;
+    text-transform: uppercase !important;
+    
+    /* Золотое свечение вокруг кнопки */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Усиливаем свечение при наведении или нажатии */
+.site-footer button:hover, 
+.site-footer button:active {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8) !important;
+    transform: scale(1.02) !important;
+}
+
+/* --- ФИКС: ПОДНИМАЕМ ЛОГОТИП ВПЛОТНУЮ К СОЦСЕТЯМ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
+@media (max-width: 768px) {
+    /* Убираем огромные отступы и разделительную линию после блока соцсетей */
+    .site-footer .container > div:first-child {
+        padding-bottom: 5px !important;
+        margin-bottom: 5px !important;
+        border-bottom: none !important;
+    }
+    
+    /* Слегка подтягиваем сам логотип вверх */
+    .site-footer .logo {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+}
+
+/* --- ФИКС: ПРИТЯГИВАЕМ ТЕКСТ К СОЦСЕТЯМ (ОТРИЦАТЕЛЬНЫЙ ОТСТУП) --- */
+@media (max-width: 768px) {
+    /* Полностью убиваем отступы у блока с соцсетями */
+    .site-footer .container > div:nth-child(1) {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: none !important;
+    }
+    
+    /* Применяем жесткий отрицательный отступ ко всему нижнему блоку (начиная с логотипа) */
+    .site-footer .container > div:nth-child(2) {
+        margin-top: -30px !important; 
+        padding-top: 0 !important;
+    }
+    
+    /* Убираем любые отступы над самим золотым логотипом */
+    .site-footer .logo {
+        margin-top: 0 !important;
+        line-height: 1 !important;
+    }
+}
+
+/* --- ФИКС: ЭКСТРЕМАЛЬНЫЙ ОТРИЦАТЕЛЬНЫЙ ОТСТУП (-300px) ДЛЯ ПОДВАЛА --- */
+@media (max-width: 768px) {
+    .site-footer .container > div:nth-child(2) {
+        margin-top: -220px !important; 
+        padding-top: 0 !important;
+        position: relative !important;
+        z-index: 10 !important; /* Гарантируем, что текст останется поверх фона */
+        pointer-events: none; /* Чтобы текст не перекрывал клики по соцсетям, если наедет на них */
+    }
+    
+    /* Возвращаем кликабельность ссылкам внутри текста */
+    .site-footer .container > div:nth-child(2) a {
+        pointer-events: auto;
+    }
+}
+
+/* --- ФИКС: КАРТОЧКИ И ФОТО НЕ УХОДЯТ ЗА КРАЙ ЭКРАНА (МОБИЛЬНАЯ ВЕРСИЯ) --- */
+@media (max-width: 768px) {
+    /* Защита для главного контейнера: запрещаем расширяться */
+    main.page-content, 
+    .container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Сетка карточек: строго одна колонка, добавляем отступы от краев экрана */
+    .news-grid, 
+    .cards-grid,
+    [style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 15px !important; /* Аккуратные отступы слева и справа */
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Сама карточка: 100% ширины, ничего не вылезает */
+    .news-card, 
+    article, 
+    .card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        overflow: hidden !important; /* Жестко обрезаем всё, что пытается вылезти */
+    }
+
+    /* Изображения внутри карточек: адаптируем под ширину */
+    .news-card img, 
+    article img, 
+    .card img, 
+    main img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important; /* Сохраняем пропорции фото */
+        object-fit: cover !important; /* Красиво заполняем пространство */
+        display: block !important;
+    }
+}
+
+/* --- ФИКС: БОКОВЫЕ КАРТОЧКИ И ТЕКСТ НЕ УЕЗЖАЮТ ЗА КРАЙ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
+@media (max-width: 768px) {
+    /* Находим контейнеры, которые стоят рядом (большая карточка + 3 маленьких) и заставляем их встать в колонку */
+    main .container > div,
+    .hero-section,
+    .top-news,
+    .featured-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Боковая колонка, где лежат эти 3 карточки */
+    aside, 
+    .sidebar, 
+    .side-cards,
+    .secondary-news {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Жесткий приказ тексту: ПЕРЕНОСИТЬСЯ на новую строку, если не влезает */
+    main *, 
+    .container * {
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* --- ФИКС: ТЕКСТ ПОД ФОТО В БОКОВЫХ КАРТОЧКАХ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
+@media (max-width: 768px) {
+    /* Меняем направление на вертикальное (колонку) */
+    .tech-news-card, 
+    .side-cards article,
+    .secondary-news .card {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important; /* Добавляем расстояние между фото и текстом */
+    }
+    
+    /* Растягиваем фото на всю ширину карточки */
+    .tech-news-card img, 
+    .side-cards article img,
+    .secondary-news .card img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 0 !important; /* Убираем боковые отступы, если они были */
+    }
+}
+
+/* --- ИСПРАВЛЕНИЕ: НОВОСТНЫЕ КАРТОЧКИ НА МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+    .tech-news-card {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 1rem !important; /* Настройка внутренних отступов для мобильных */
+    }
+
+    /* Убеждаемся, что изображения внутри карточек растягиваются на всю ширину */
+    .tech-news-card img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin-bottom: 1rem !important; /* Отступ между картинкой и текстом */
+        border-radius: 8px !important; /* Добавляем скругление углам картинки */
+    }
+}
+
+/* --- БРОНЕБОЙНЫЙ ФИКС: 3 БОКОВЫЕ КАРТОЧКИ (ФОТО СВЕРХУ, ТЕКСТ СНИЗУ) --- */
+@media (max-width: 768px) {
+    /* 1. Превращаем саму карточку в строгую колонку */
+    aside article, 
+    .side-cards article, 
+    .secondary-news article,
+    aside .card,
+    .side-cards .card,
+    .secondary-news .card {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* 2. Жестко растягиваем ВСЕ обертки внутри карточки (ссылки, дивы с текстом) на 100% */
+    aside article > *, 
+    .side-cards article > *, 
+    .secondary-news article > *,
+    aside .card > *,
+    .side-cards .card > *,
+    .secondary-news .card > * {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important; /* Отключаем боковое позиционирование */
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Растягиваем само фото на всю ширину экрана и задаем красивые пропорции */
+    aside article img, 
+    .side-cards article img, 
+    .secondary-news article img,
+    aside .card img,
+    .side-cards .card img,
+    .secondary-news .card img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16/9 !important; /* Горизонтальный формат фото */
+        object-fit: cover !important;
+        margin-bottom: 12px !important; /* Аккуратный отступ от фото до текста */
+        border-radius: 8px !important;
+    }
+    
+    /* 4. Даем тексту небольшой отступ сверху, чтобы он не прилипал к картинке */
+    aside article > div:last-child, 
+    .side-cards article > div:last-child,
+    aside .card > div:last-child,
+    .side-cards .card > div:last-child {
+        padding-top: 10px !important;
+    }
+}
+
+/* --- УМНЫЙ ФИКС: ЛЮБЫЕ КАРТОЧКИ НА МОБИЛЬНОМ СТАНОВЯТСЯ ВЕРТИКАЛЬНЫМИ --- */
+@media (max-width: 768px) {
+    /* Находим любые статьи, ссылки или дивы внутри main, которые ведут себя как flex-строки */
+    main article,
+    main .container a:has(img),
+    main .container div:has(> img) {
+        display: flex !important;
+        flex-direction: column !important; /* Строго колонка! */
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-bottom: 25px !important;
+        overflow: hidden !important;
+    }
+
+    /* Растягиваем ВСЕ картинки внутри новостей на 100% ширины */
+    main article img,
+    main .container a img,
+    main .container div > img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        display: block !important;
+        margin: 0 0 15px 0 !important; /* Отступ только снизу, до текста */
+        border-radius: 8px !important;
+    }
+
+    /* Текстовые блоки внутри этих карточек */
+    main article > div,
+    main .container a > div,
+    main .container div:has(> img) > div,
+    main .container div:has(> img) > h2,
+    main .container div:has(> img) > h3,
+    main .container div:has(> img) > p {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important; /* Небольшой отступ от краев экрана для текста */
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+}
+
+/* --- ФИКС: ФОТОГРАФИИ ОТ КРАЯ ДО КРАЯ ЭКРАНА (МОБИЛЬНАЯ ВЕРСИЯ) --- */
+@media (max-width: 768px) {
+    /* 1. Убираем боковые отступы у контейнеров и сетки */
+    .news-grid, 
+    main .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 2. Обнуляем отступы у самих карточек */
+    .tech-news-card, 
+    main article, 
+    main .container a:has(img), 
+    main .container div:has(> img) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border-radius: 0 !important; /* Убираем скругления рамки */
+        border: none !important; /* Убираем боковые границы, если есть */
+    }
+
+    /* 3. Растягиваем фото строго от края до края и убираем круглые углы */
+    main article img,
+    main .container a img,
+    main .container div > img,
+    .tech-news-card img {
+        width: 100vw !important; /* Жестко на всю ширину экрана */
+        max-width: 100vw !important;
+        border-radius: 0 !important; /* Острые углы для идеального прилегания */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* 4. Задаем аккуратные отступы только для текста, чтобы он не прилипал к краям */
+    .tech-news-card > *:not(img),
+    main article > *:not(img),
+    main .container a:has(img) > *:not(img),
+    main .container div:has(> img) > *:not(img) {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* === ДЕСКТОПНОЕ ВЫЕЗЖАЮЩЕЕ МЕНЮ (OFF-CANVAS) === */
+
+/* 1. Прячем этот функционал на мобильных устройствах */
+@media (max-width: 768px) {
+    .desktop-burger-btn, 
+    .desktop-side-panel, 
+    .side-panel-overlay {
+        display: none !important;
+    }
+}
+
+/* 2. Кнопка "Три полоски" (Гамбургер) в шапке */
+.desktop-burger-btn {
+    background: none !important;
+    border: none !important;
+    color: var(--text-color, #fff) !important;
+    font-size: 32px !important;
+    cursor: pointer !important;
+    padding: 0 15px !important;
+    transition: color 0.3s ease, transform 0.3s ease !important;
+    display: inline-flex;
+    align-items: center;
+}
+.desktop-burger-btn:hover { 
+    color: #FFD700 !important; /* Золотой при наведении */
+    transform: scale(1.1) !important;
+}
+
+/* 3. Темный фон-затмение, закрывающий остальной сайт */
+.side-panel-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(4px);
+    z-index: 9998; 
+    opacity: 0; visibility: hidden; 
+    transition: all 0.4s ease;
+}
+.side-panel-overlay.active { opacity: 1; visibility: visible; }
+
+/* 4. Сама боковая панель со стеклянным дизайном */
+.desktop-side-panel {
+    position: fixed; top: 0; right: -500px; /* Спрятана за правым краем экрана */
+    width: 450px; height: 100vh;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 215, 0, 0.3); /* Тонкая золотая рамка */
+    z-index: 9999;
+    overflow-y: auto; /* Можно крутить колесиком, если ссылок много */
+    transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    padding: 40px 30px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+}
+.desktop-side-panel.active { right: 0; /* Выезжает на экран */ }
+
+/* 5. Кнопка "Закрыть" (Крестик) */
+.close-panel-btn {
+    background: none; border: none; 
+    color: #fff; font-size: 40px; line-height: 1;
+    position: absolute; top: 20px; right: 30px; 
+    cursor: pointer; transition: color 0.3s, transform 0.3s;
+}
+.close-panel-btn:hover { color: #FFD700; transform: rotate(90deg); }
+
+/* 6. Дизайн списков и ссылок внутри панели (как у Вясны) */
+.desktop-side-panel h2 { color: #fff; font-size: 2rem; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 15px;}
+.desktop-side-panel h3 { color: #FFD700; margin-top: 25px; margin-bottom: 10px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px;}
+.desktop-side-panel ul { list-style: none; padding: 0; margin: 0; }
+.desktop-side-panel ul li { margin-bottom: 12px; }
+.desktop-side-panel ul li a { 
+    color: #ccc; text-decoration: none; font-size: 1.1rem; 
+    transition: all 0.2s ease; display: inline-block;
+}
+.desktop-side-panel ul li a:hover { color: #FFD700; transform: translateX(10px); } /* Ссылка красиво отъезжает вправо при наведении */

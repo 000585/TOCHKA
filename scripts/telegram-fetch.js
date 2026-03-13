@@ -1,85 +1,61 @@
-﻿const fs = require("fs");
-const path = require("path");
-const https = require("https");
+﻿const fs = require('fs');
+const path = require('path');
 
-const TOKEN = process.env.TELEGRAM_TOKEN;
-const NEWS_DIR = path.join(__dirname, "..", "src", "news");
+const CHANNEL = 'Z690002'; // Твой канал
+const URL = `https://t.me/s/${CHANNEL}`;
 
-async function fetchUpdates() {
-  if (!TOKEN || TOKEN === "your_bot_token_here") {
-    console.log("⚠️ TELEGRAM_TOKEN не настроен. Пропуск импорта.");
-    return;
-  }
+async function fetchTelegram() {
+    console.log(`📡 Ищу новости и видео в Telegram @${CHANNEL}...`);
+    try {
+        const response = await fetch(URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+        if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
+        
+        const html = await response.text();
+        const posts = html.split('tgme_widget_message_bubble').slice(1);
+        
+        let count = 0;
+        const newsDir = path.join(__dirname, '..', 'src', 'news');
+        if (!fs.existsSync(newsDir)) fs.mkdirSync(newsDir, { recursive: true });
 
-  console.log("🔄 Подключение к Telegram API...");
-  const url = `https://api.telegram.org/bot${TOKEN}/getUpdates?allowed_updates=["channel_post"]`;
+        for (const postHtml of posts) {
+            const textMatch = postHtml.match(/<div class="tgme_widget_message_text[^>]*>(.*?)<\/div>/s);
+            if (!textMatch) continue;
 
-  return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      let data = "";
-      res.on("data", chunk => data += chunk);
-      res.on("end", () => {
-        try {
-          const json = JSON.parse(data);
-          if (!json.ok) throw new Error(json.description);
-          resolve(json.result || []);
-        } catch (e) {
-          reject(e);
+            let cleanText = textMatch[1].replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+            
+            const ytMatch = cleanText.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            let videoId = ytMatch ? ytMatch[1] : null;
+
+            const imgMatch = postHtml.match(/background-image:url\('([^']+)'\)/);
+            let imageUrl = imgMatch ? imgMatch[1] : (videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null);
+
+            let lines = cleanText.split('\n').filter(l => l.trim().length > 0);
+            let title = lines.length > 0 ? lines[0].substring(0, 60) : "Новость";
+            if (title.includes('http')) title = lines.length > 1 ? lines[1].substring(0, 60) : "📹 Новое видео";
+
+            const dateMatch = postHtml.match(/<time datetime="([^"]+)"/);
+            const dateStr = dateMatch ? new Date(dateMatch[1]).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+            
+            const linkMatch = postHtml.match(/<a class="tgme_widget_message_date" href="([^"]+)"/);
+            const postLink = linkMatch ? linkMatch[1] : `https://t.me/${CHANNEL}`;
+            const postId = postLink.split('/').pop() || Math.floor(Math.random()*1000);
+            
+            const filePath = path.join(newsDir, `${dateStr}-tg-${postId}.md`);
+
+            if (!fs.existsSync(filePath)) {
+                let mdContent = `---\ntitle: "${title.replace(/"/g, '')}"\ndescription: "${cleanText.substring(0, 150).replace(/\n/g, ' ').replace(/"/g, '')}..."\ndate: ${dateStr}\ntags: ["news"]\nsource_link: "${postLink}"\n`;
+                if (imageUrl) mdContent += `image: "${imageUrl}"\n`;
+                if (videoId) mdContent += `video_id: "${videoId}"\n`;
+                mdContent += `---\n\n${cleanText}\n`;
+
+                fs.writeFileSync(filePath, mdContent, 'utf8');
+                console.log(`✅ Скачано: ${title}`);
+                count++;
+            }
         }
-      });
-    }).on("error", reject);
-  });
-}
-
-function generateSlug(text) {
-  return text.toLowerCase().replace(/[^a-zа-я0-9]+/g, '-').substring(0, 40).replace(/^-|-$/g, '');
-}
-
-async function main() {
-  try {
-    const updates = await fetchUpdates();
-    if (!updates) return;
-
-    let imported = 0;
-    for (const update of updates) {
-      if (!update.channel_post || !update.channel_post.text) continue;
-      
-      const post = update.channel_post;
-      const date = new Date(post.date * 1000).toISOString().split('T')[0];
-      const text = post.text;
-      const title = text.split('\n')[0].substring(0, 60) + "...";
-      const slug = `${date}-${generateSlug(title)}`;
-      const filepath = path.join(NEWS_DIR, `${slug}.md`);
-
-      if (!fs.existsSync(filepath)) {
-        const content = `---
-title: "${title.replace(/"/g, '\\"')}"
-date: ${date}
-description: "Импортировано из официального Telegram-канала."
-tags: ["telegram", "новости"]
-author: "ЦИК (Telegram)"
-telegram_id: ${post.message_id}
-draft: false
-ai_enhanced: false
-requires_review: true
-chudo_notarized: false
-chudo_tx_hash: null
-chudo_notarized_at: null
----
-
-${text}
-
-*Оригинал опубликован в официальном канале Telegram.*
-`;
-        fs.writeFileSync(filepath, content);
-        imported++;
-        console.log(`✅ Импортирован пост: ${slug}`);
-      }
+        console.log(`\n🎉 Готово! Новых постов: ${count}`);
+    } catch (err) {
+        console.error("❌ Ошибка:", err.message);
     }
-    console.log(`🎉 Импорт завершен. Новых статей: ${imported}`);
-  } catch (error) {
-    console.error("❌ Ошибка импорта Telegram:", error.message);
-  }
 }
-
-main();
+fetchTelegram();

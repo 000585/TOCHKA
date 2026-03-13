@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+<div class='page-container'>
+  <div class='container'>
+n    <header class='page-header'>
+n      <h1>{{ title }}</h1>
+n      {% if description %}<p class='page-description'>{{ description }}</p>{% endif %}
+n    </header>
+n    <div class='page-content'>{{ content | safe }}</div>
+n  </div>
+n</div>

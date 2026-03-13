@@ -1,17 +1,17 @@
-﻿---
-layout: layouts/base.njk
+---
+layout: base.njk
 ---
 <article class='article-container'>
   <header class='article-header'>
 n    <div class='container'>
-n      {% if draft %}<div class='draft-banner'><span>⚠️ ЧЕРНОВИК</span></div>{% endif %}
+n      {% if draft %}<div class='draft-banner'><span>?? ????????</span></div>{% endif %}
 n      {% if tags %}<div class='article-tags'>{% for tag in tags %}<a href='/tags/{{ tag | slug }}/' class='tag'>#{{ tag }}</a>{% endfor %}</div>{% endif %}
 n      <h1 class='article-title'>{{ title }}</h1>
 n      <div class='article-meta'>
 n        <time datetime='{{ date | dateFormat }}'>{{ date | dateFormat }}</time>
-n        {% if author %}<span class='article-author'>Автор: {{ author }}</span>{% endif %}
-n        {% if ai_enhanced %}<span class='ai-badge'>🤖 AI</span>{% endif %}
-n        {% if chudo_notarized %}<span class='chudo-badge'>⛓️ CHUDO</span>{% endif %}
+n        {% if author %}<span class='article-author'>?????: {{ author }}</span>{% endif %}
+n        {% if ai_enhanced %}<span class='ai-badge'>?? AI</span>{% endif %}
+n        {% if chudo_notarized %}<span class='chudo-badge'>?? CHUDO</span>{% endif %}
 n      </div>
 n    </div>
 n  </header>

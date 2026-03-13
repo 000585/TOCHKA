@@ -1,18 +1,69 @@
-﻿<header class="site-header">
-  <div class="container header-inner">
-    <a href="/" class="logo">{{ site.shortName }}</a>
-    
-    <nav aria-label="Main Navigation" class="main-nav">
-      <ul class="nav-links">
-        {% for item in navigation.main %}
-        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-    
-    <div class="header-controls">
-      <button id="theme-toggle" aria-label="Переключить тему" class="theme-btn">🌓</button>
-      <button id="mobile-menu-btn" aria-label="Открыть меню" class="mobile-btn">☰</button>
-    </div>
+<style>
+  /* Базовые стили */
+  .header-main { background: #000; color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; height: 60px; }
+  .nav-menu { display: flex; gap: 20px; }
+  .nav-menu a { color: white; text-decoration: none; font-weight: 500; }
+  .btn-support { background-color: #ff0000; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+  .btn-youtube { display: flex; align-items: center; }
+  .menu-toggle { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+
+  /* МОБИЛЬНЫЕ СТИЛИ (Экран до 768px) */
+  @media (max-width: 768px) {
+    /* 1. Убираем YouTube */
+    .btn-youtube { display: none !important; }
+
+    /* 2. Кнопка ПОДДЕРЖАТЬ: Красная, снизу, всегда видна */
+    .btn-support {
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 60px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background-color: #ff0000 !important; /* Ярко-красный */
+      border-radius: 0 !important;
+      z-index: 9999 !important;
+      font-size: 1.2rem !important;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.5) !important;
+    }
+
+    /* 3. Меню: вытаскиваем из-за стенки */
+    .nav-menu {
+      position: fixed !important;
+      top: 60px !important;
+      left: -100% !important; /* Прячем слева */
+      width: 100% !important;
+      height: calc(100vh - 120px) !important; /* Минус шапка и нижняя кнопка */
+      background: #111 !important;
+      flex-direction: column !important;
+      padding: 30px !important;
+      transition: 0.3s !important;
+      z-index: 9998 !important;
+    }
+    .nav-menu.active {
+      left: 0 !important; /* Показываем */
+    }
+    .menu-toggle { display: block !important; }
+  }
+</style>
+
+<header class="header-main">
+  <div class="logo">
+    <a href="/" style="color: #00ffff; font-weight: bold; font-size: 1.3rem; text-decoration: none;">Точка Невозврата</a>
+  </div>
+
+  <nav class="nav-menu" id="mobileMenu">
+    <a href="/">Главная</a>
+    <a href="/posts/">Лента</a>
+    <a href="/about/">О редакции</a>
+    <a href="/contact/">Контакты</a>
+  </nav>
+
+  <div style="display: flex; align-items: center; gap: 15px;">
+    <a href="/support/" class="btn-support">ПОДДЕРЖАТЬ</a>
+    <button class="menu-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('active')">☰</button>
   </div>
 </header>

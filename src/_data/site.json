@@ -1,11 +1,12 @@
 ﻿{
-  "name": "Центральная избирательная комиссия",
-  "shortName": "ЦИК",
-  "url": "https://cik-chudzinovich.netlify.app",
+  "name": "Сетевое издание Точка Невозврата",
+  "shortName": "Точка Невозврата",
+  "url": "https://point-of-no-return.netlify.app",
   "language": "ru",
-  "description": "Официальный сайт Центральной избирательной комиссии",
-  "author": "ЦИК",
-  "telegram": "https://t.me/cik_news",
-  "email": "yury@chudzinovich.de",
-  "founded": "2026"
+  "description": "Главные О редакции, аналитика и новости, после которых мир не будет прежним.",
+  "author": "Чудинович Ю.Е.",
+  "telegram": "https://t.me/no_return_news",
+  "email": "YURY@CHUDZINOVICH.DE",
+  "phone": "+48 795-972-990",
+  "founded": "1024"
 }

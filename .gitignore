@@ -1,0 +1,17 @@
+﻿# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Зависимости
+node_modules/
+
+# Сгенерированные файлы
+_site/
+.sass-cache/
+.cache/
+*.log
+
+# Локальные настройки
+.env
+.vscode/
+*.sublime-*
