@@ -52,18 +52,18 @@
 
 <header class="header-main">
   <div class="logo">
-    <a href="/" style="color: #00ffff; font-weight: bold; font-size: 1.3rem; text-decoration: none;">Точка Невозврата</a>
+    <a href="{{ '/' | url }}" style="color: #00ffff; font-weight: bold; font-size: 1.3rem; text-decoration: none;">Точка Невозврата</a>
   </div>
 
   <nav class="nav-menu" id="mobileMenu">
-    <a href="/">Главная</a>
-    <a href="{{ '/posts/' | url }}">Лента</a>
-    <a href="{{ '/about/' | url }}">О редакции</a>
-    <a href="{{ '/contact/' | url }}">Контакты</a>
+    <a href="{{ '/' | url }}">Главная</a>
+    <a href="{{ '{{ '/posts/' | url }}' | url }}">Лента</a>
+    <a href="{{ '{{ '/about/' | url }}' | url }}">О редакции</a>
+    <a href="{{ '{{ '/contact/' | url }}' | url }}">Контакты</a>
   </nav>
 
   <div style="display: flex; align-items: center; gap: 15px;">
-    <a href="{{ '/support/' | url }}" class="btn-support">ПОДДЕРЖАТЬ</a>
+    <a href="{{ '{{ '/support/' | url }}' | url }}" class="btn-support">ПОДДЕРЖАТЬ</a>
     <button class="menu-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('active')">☰</button>
   </div>
 </header>

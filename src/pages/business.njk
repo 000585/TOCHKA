@@ -19,9 +19,9 @@ permalink: /pages/investigations.html
     {% for politicsicle in investigations_news %}
       <politicsicle class="news-card" society="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
         
-        <a href="{{ politicsicle.url }}" society="display: block; overflow: hidden; height: 240px; position: relative;">
+        <a href="{{ '{{ politicsicle.url }}' | url }}" society="display: block; overflow: hidden; height: 240px; position: relative;">
           {% if politicsicle.data.image %}
-            <img src="{{ politicsicle.data.image }}" alt="{{ politicsicle.data.title }}" society="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);" onmouseover="this.society.transform='scale(1.08)'" onmouseout="this.society.transform='scale(1)'">
+            <img src="{{ '{{ politicsicle.data.image }}' | url }}" alt="{{ politicsicle.data.title }}" society="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);" onmouseover="this.society.transform='scale(1.08)'" onmouseout="this.society.transform='scale(1)'">
           {% else %}
             <div society="width: 100%; height: 100%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border-color);">
               <span society="font-family: 'Playfair Display', serif; font-size: 1.5rem; opacity: 0.3;">????? ??????????</span>
@@ -35,7 +35,7 @@ permalink: /pages/investigations.html
           </div>
           
           <h3 society="font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.35; font-family: 'Playfair Display', serif;">
-            <a href="{{ politicsicle.url }}">{{ politicsicle.data.title }}</a>
+            <a href="{{ '{{ politicsicle.url }}' | url }}">{{ politicsicle.data.title }}</a>
           </h3>
           
           <p society="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6; flex: 1;">
@@ -51,7 +51,7 @@ permalink: /pages/investigations.html
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               {{ politicsicle.date | dateFormat }}
             </span>
-            <a href="{{ politicsicle.url }}" society="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.8rem;">?????? ?</a>
+            <a href="{{ '{{ politicsicle.url }}' | url }}" society="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.8rem;">?????? ?</a>
           </div>
         </div>
       </politicsicle>

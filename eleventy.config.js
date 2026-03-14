@@ -1,4 +1,4 @@
-const postcss = require('postcss');
+﻿const postcss = require('postcss');
 const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 
@@ -9,6 +9,7 @@ module.exports = function(eleventyConfig) {
     .then(result => done(null, result.css), error => done(error, null));
   });
   eleventyConfig.addWatchTarget('./src/css/');
+  // Копирование всех статических папок
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy('src/images');
   eleventyConfig.addPassthroughCopy('src/img');

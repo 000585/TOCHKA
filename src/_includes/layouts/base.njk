@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} | {{ site.shortName }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/header.css' | url }}">
+  <link rel="stylesheet" href="{{ '{{ '/assets/css/main.css' | url }}' | url }}">
+  <link rel="stylesheet" href="{{ '{{ '/assets/css/header.css' | url }}' | url }}">
   <style>
     .social-link-icon {
       display: flex; align-items: center; justify-content: center;
@@ -29,10 +29,10 @@
   </main>
 
   {% include "components/footer.njk" %}
-  <script src="{{ '/assets/js/main.js' | url }}"></script>
+  <script src="{{ '{{ '/assets/js/main.js' | url }}' | url }}"></script>
 
 <!-- ????????? ?????? "??????????" (???????, ????? ??????) -->
-<a href="{{ '/fundraiser/' | url }}" class="mobile-support-btn" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #ff0000; color: white; padding: 14px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 8px 20px rgba(255,0,0,0.6); z-index: 10000; border: 2px solid rgba(255,255,255,0.3); letter-spacing: 1px; font-size: 16px; display: none;">??????????</a>
+<a href="{{ '{{ '/fundraiser/' | url }}' | url }}" class="mobile-support-btn" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #ff0000; color: white; padding: 14px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; text-decoration: none; box-shadow: 0 8px 20px rgba(255,0,0,0.6); z-index: 10000; border: 2px solid rgba(255,255,255,0.3); letter-spacing: 1px; font-size: 16px; display: none;">??????????</a>
 <style>
   @media (max-width: 768px) {
     .mobile-support-btn {
