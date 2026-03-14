@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} | {{ site.shortName }}</title>
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/header.css' | url }}">
   <style>
     .social-link-icon {
       display: flex; align-items: center; justify-content: center;
@@ -38,7 +38,7 @@
         </ul>
       </nav>
           <div class="header-controls" style="display: flex; align-items: center; gap: 15px;">
-      <a href="/fundraiser/" style="display: inline-block; padding: 8px 20px; background: linear-gradient(90deg, #2563eb, #22d3ee); color: #ffffff !important; font-weight: bold; text-transform: uppercase; text-decoration: none; border-radius: 50px; font-size: 13px; box-shadow: 0 4px 15px rgba(37,99,235,0.4); border: 1px solid rgba(255,255,255,0.2);">
+      <a href="{{ '/fundraiser/' | url }}" style="display: inline-block; padding: 8px 20px; background: linear-gradient(90deg, #2563eb, #22d3ee); color: #ffffff !important; font-weight: bold; text-transform: uppercase; text-decoration: none; border-radius: 50px; font-size: 13px; box-shadow: 0 4px 15px rgba(37,99,235,0.4); border: 1px solid rgba(255,255,255,0.2);">
         Поддержать
       </a>
 
@@ -53,7 +53,7 @@
   </main>
 
   {% include "components/footer.njk" %}
-  <script src="/assets/js/main.js"></script>
+  <script src="{{ '/assets/js/main.js' | url }}"></script>
 
 
 </body>

@@ -1,8 +1,8 @@
-﻿---
+---
 layout: base.njk
 title: "???????"
 ---
-<video id="bg-video" autoplay loop muted playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; opacity: 1; pointer-events: none;"><source src="/assets/img/promo.mp4" type="video/mp4"></video>
+<video id="bg-video" autoplay loop muted playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; opacity: 1; pointer-events: none;"><source src="{{ '/assets/img/promo.mp4' | url }}" type="video/mp4"></video>
 <style id="bg-fix-index"> body, html, main, .wrapper, .site-content { background: transparent !important; background-color: transparent !important; } 
       @media (max-width: 1100px) {
         .hero-layout { 
@@ -48,7 +48,7 @@ title: "???????"
       .hero-banner p { margin: 0; font-size: 13px; opacity: 0.7; }
       .hero-banner.accent { background: linear-gradient(135deg, rgba(0, 38, 77, 0.7), rgba(0, 77, 153, 0.6)); border-color: rgba(0, 255, 255, 0.3); }
       .hero-banner.accent:hover { border-color: #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
-       /* Скрываем на планшетах и телефонах ради видео */
+       /* ???????? ?? ????????? ? ????????? ???? ????? */
     
       @media (max-width: 768px) { .hero-layout { margin-top: -130px !important; } }
     
@@ -84,28 +84,28 @@ title: "???????"
     </style>
     <div class="hero-layout">
         <div class="hero-side">
-            <a href="/cooperation/" class="hero-banner" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/img/photo_2026-03-11_09-17-46.jpg); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1);">
-    <h4>📢 Сотрудничество</h4>
-    <p>Узнать про размещение рекламы</p>
+            <a href="{{ '/cooperation/' | url }}" class="hero-banner" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/img/photo_2026-03-11_09-17-46.jpg); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1);">
+    <h4>?? ??????????????</h4>
+    <p>?????? ??? ?????????? ???????</p>
 </a>
         </div>
         
         <div class="hero-center">
             <div id="main-player-container" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); background: #000;">
                 <video controls style="width: 100%; height: 100%; object-fit: contain; outline: none;">
-                    <source src="/assets/img/main.mp4" type="video/mp4">
+                    <source src="{{ '/assets/img/main.mp4' | url }}" type="video/mp4">
                 </video>
             </div>
         </div>
 
         <div class="hero-side">
 <a href="https://zrzutka.pl/komitet-solidarnosci-represjonowanych" target="_blank" class="hero-banner accent">
-    <h4>💎 Поддержать</h4>
-    <p>Комитет солидарности</p>
+    <h4>?? ??????????</h4>
+    <p>??????? ????????????</p>
 </a>
-<a href="/cooperation/" class="hero-banner" style="background: url(/img/photo_2026-03-11_09-17-46.jpg) center/cover no-repeat; border: 1px solid rgba(255,255,255,0.2);">
-    <h4>🚀 Реклама</h4>
-    <p>Разместить ваш баннер здесь</p>
+<a href="{{ '/cooperation/' | url }}" class="hero-banner" style="background: url(/img/photo_2026-03-11_09-17-46.jpg) center/cover no-repeat; border: 1px solid rgba(255,255,255,0.2);">
+    <h4>?? ???????</h4>
+    <p>?????????? ??? ?????? ?????</p>
 </a>
 </div>
     </div>
@@ -119,7 +119,7 @@ title: "???????"
       
       {% if recent_news.length > 0 %}
       <div class="hero__main" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%), url('{{ recent_news[0].data.image }}') center/cover no-repeat; border: none; min-height: 450px;">
-        <span class="hero__badge">Эксклюзив</span>
+        <span class="hero__badge">?????????</span>
         <h2 class="hero__title"><a href="{{ recent_news[0].url }}" style="color: #ffffff;">{{ recent_news[0].data.title }}</a></h2>
         <div class="news-card__meta" style="border: none; padding: 0; color: #b3b3b3;">
           <span>{{ recent_news[0].date | dateFormat }}</span>
@@ -148,7 +148,7 @@ title: "???????"
   </section>
 
   <section>
-    <h2 class="section-title">Самое обсуждаемое</h2>
+    <h2 class="section-title">????? ???????????</h2>
     <div class="popular-grid">
       {% set popular_news = collections.news | slice(1, 4) %}
       {% for article in popular_news %}
@@ -161,7 +161,7 @@ title: "???????"
   </section>
 
   <section>
-    <h2 class="section-title">Последние публикации</h2>
+    <h2 class="section-title">????????? ??????????</h2>
     <div class="news-grid">
       {% set more_news = collections.news | slice(4, 10) %}
       {% for article in more_news %}
@@ -174,12 +174,12 @@ title: "???????"
             <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">{{ article.templateContent | excerpt }}</p>
             <div class="news-card__meta" style="margin-top: auto;">
               <span>{{ article.date | dateFormat }}</span>
-              <a href="{{ article.url }}" style="color: var(--accent-color); font-weight: 500;">Читать →</a>
+              <a href="{{ article.url }}" style="color: var(--accent-color); font-weight: 500;">?????? ?</a>
             </div>
           </div>
         </article>
       {% else %}
-        <p style="color: var(--text-secondary);">Эксклюзив Эксклюзив ? ??????????.</p>
+        <p style="color: var(--text-secondary);">????????? ????????? ? ??????????.</p>
       {% endfor %}
     </div>
   </section>
@@ -189,38 +189,38 @@ title: "???????"
 
 <div class="container" style="margin-top: 60px; margin-bottom: 40px; position: relative; z-index: 10;">
     <div style="border-left: 5px solid var(--accent-color); padding-left: 20px; margin-bottom: 30px;">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Наши партнёры</h2>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">???? ????????</h2>
     </div>
     
         <style>
-        /* Стили только для мобильных экранов (уже чем 768px) */
+        /* ????? ?????? ??? ????????? ??????? (??? ??? 768px) */
         @media (max-width: 768px) {
             .partners-grid-mobile {
-                grid-template-columns: 1fr !important; /* Одна карточка на всю ширину */
+                grid-template-columns: 1fr !important; /* ???? ???????? ?? ??? ?????? */
             }
             .partners-grid-mobile a {
-                height: 180px !important; /* Увеличиваем высоту, чтобы не обрезало картинку */
+                height: 180px !important; /* ??????????? ??????, ????? ?? ???????? ???????? */
             }
             .partners-grid-mobile img {
-                object-position: center !important; /* Центруем изображение */
+                object-position: center !important; /* ???????? ??????????? */
             }
         }
     </style>
     <div class="partners-grid-mobile" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px;">
         
-        <a href="https://000585.github.io/com" target="_blank" title="Правозащитный центр ДЕМОКРАТИЧЕСКИХ СИЛ БЕЛАРУСИ. Помощь политзаключённым, юридическая поддержка, сбор средств (CHUDO KRC20)." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="/img/9xeglw9.jpg" alt="Комитет Солидарности" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="https://000585.github.io/com" target="_blank" title="????????????? ????? ??????????????? ??? ????????. ?????? ????????????????, ??????????? ?????????, ???? ??????? (CHUDO KRC20)." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/9xeglw9.jpg' | url }}" alt="??????? ????????????" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="https://000585.github.io/1/?lang=ru" target="_blank" title="Правозащитный центр «Белорусские демократические силы» (БДС). Защита прав, освобождение политзаключенных, гуманитарная помощь." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="/img/7r8h1.jpg" alt="БДС" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="https://000585.github.io/1/?lang=ru" target="_blank" title="????????????? ????? �??????????? ??????????????? ????� (???). ?????? ????, ???????????? ????????????????, ???????????? ??????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/7r8h1.jpg' | url }}" alt="???" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="https://000585.github.io/4/?lang=ru" target="_blank" title="Независимая Центральная Избирательная Комиссия. Защита прав избирателей и обеспечение прозрачных выборов." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="/img/kxe6.jpg" alt="ЦИК" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="https://000585.github.io/4/?lang=ru" target="_blank" title="??????????? ??????????? ????????????? ????????. ?????? ???? ??????????? ? ??????????? ?????????? ???????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/kxe6.jpg' | url }}" alt="???" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="https://000585.github.io/2/?lang=ru" target="_blank" title="Фонд «Демократические силы Беларуси»" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="/img/photo_2026-03-11_09-17-46.jpg" alt="Фонд БДС" style="width: 100%; height: 100%; object-fit: contain;"></a>
+        <a href="https://000585.github.io/2/?lang=ru" target="_blank" title="???? �??????????????? ???? ????????�" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-11_09-17-46.jpg' | url }}" alt="???? ???" style="width: 100%; height: 100%; object-fit: contain;"></a>
 
-        <a href="https://6900903-ai.github.io/6900903-ai/?lang=ru" target="_blank" rel="noopener noreferrer" title="ФОНД ЧЕСТНЫЙ ПОЛИТЗЕК Платформа взаимопомощи. Поддержка семей, информационный ресурс, интеграция с цифровыми инструментами." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="/img/photo_2026-03-11_20-04-18.jpg" alt="ФОНД ЧЕСТНЫЙ ПОЛИТЗЕК" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="https://6900903-ai.github.io/6900903-ai/?lang=ru" target="_blank" rel="noopener noreferrer" title="???? ??????? ???????? ????????? ????????????. ????????? ?????, ?????????????? ??????, ?????????? ? ????????? ?????????????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-11_20-04-18.jpg' | url }}" alt="???? ??????? ????????" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="/del/" title="Партия ДЕЛ (Демократия. Экология. Лидерство)" style="aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; position: relative; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="/img/photo_2026-03-11_22-37-29.jpg" alt="Партия ДЕЛ" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ '/del/' | url }}" title="?????? ??? (??????????. ????????. ?????????)" style="aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; position: relative; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-11_22-37-29.jpg' | url }}" alt="?????? ???" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="/chudo/" title="Проект CHUDO: Децентрализованный мессенджер и криптокошелек" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="/img/photo_2026-03-12_00-13-33.jpg" alt="Проект CHUDO" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ '/chudo/' | url }}" title="?????? CHUDO: ?????????????????? ?????????? ? ?????????????" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-12_00-13-33.jpg' | url }}" alt="?????? CHUDO" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
         <a href="#" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
             
