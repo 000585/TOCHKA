@@ -2,7 +2,7 @@
 layout: base.njk
 title: "???????"
 ---
-<video id="bg-video" autoplay loop muted playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; opacity: 1; pointer-events: none;"><source src="{{ '{{ '/assets/img/promo.mp4' | url }}' | url }}" type="video/mp4"></video>
+<video id="bg-video" autoplay loop muted playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; opacity: 1; pointer-events: none;"><source src="{{ '/assets/img/promo.mp4' | url }}" type="video/mp4"></video>
 <style id="bg-fix-index"> body, html, main, .wrapper, .site-content { background: transparent !important; background-color: transparent !important; } 
       @media (max-width: 1100px) {
         .hero-layout { 
@@ -84,7 +84,7 @@ title: "???????"
     </style>
     <div class="hero-layout">
         <div class="hero-side">
-            <a href="{{ '{{ '/cooperation/' | url }}' | url }}" class="hero-banner" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/img/photo_2026-03-11_09-17-46.jpg); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1);">
+            <a href="{{ '/cooperation/' | url }}" class="hero-banner" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/img/photo_2026-03-11_09-17-46.jpg); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1);">
     <h4>?? ??????????????</h4>
     <p>?????? ??? ?????????? ???????</p>
 </a>
@@ -93,7 +93,7 @@ title: "???????"
         <div class="hero-center">
             <div id="main-player-container" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); background: #000;">
                 <video controls style="width: 100%; height: 100%; object-fit: contain; outline: none;">
-                    <source src="{{ '{{ '/assets/img/main.mp4' | url }}' | url }}" type="video/mp4">
+                    <source src="{{ '/assets/img/main.mp4' | url }}" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -103,7 +103,7 @@ title: "???????"
     <h4>?? ??????????</h4>
     <p>??????? ????????????</p>
 </a>
-<a href="{{ '{{ '/cooperation/' | url }}' | url }}" class="hero-banner" style="background: url(/img/photo_2026-03-11_09-17-46.jpg) center/cover no-repeat; border: 1px solid rgba(255,255,255,0.2);">
+<a href="{{ '/cooperation/' | url }}" class="hero-banner" style="background: url(/img/photo_2026-03-11_09-17-46.jpg) center/cover no-repeat; border: 1px solid rgba(255,255,255,0.2);">
     <h4>?? ???????</h4>
     <p>?????????? ??? ?????? ?????</p>
 </a>
@@ -120,7 +120,7 @@ title: "???????"
       {% if recent_news.length > 0 %}
       <div class="hero__main" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%), url('{{ recent_news[0].data.image }}') center/cover no-repeat; border: none; min-height: 450px;">
         <span class="hero__badge">?????????</span>
-        <h2 class="hero__title"><a href="{{ '{{ recent_news[0].url }}' | url }}" style="color: #ffffff;">{{ recent_news[0].data.title }}</a></h2>
+        <h2 class="hero__title"><a href="{{ recent_news[0].url }}" style="color: #ffffff;">{{ recent_news[0].data.title }}</a></h2>
         <div class="news-card__meta" style="border: none; padding: 0; color: #b3b3b3;">
           <span>{{ recent_news[0].date | dateFormat }}</span>
         </div>
@@ -132,10 +132,10 @@ title: "???????"
           {% if loop.index0 > 0 %}
           <div class="hero__card" style="padding: 1rem;">
             {% if article.data.image %}
-            <img src="{{ '{{ article.data.image }}' | url }}" alt="{{ article.data.title }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+            <img src="{{ article.data.image }}" alt="{{ article.data.title }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
             {% endif %}
             <div style="flex: 1;">
-              <h3 class="hero__card-title" style="font-size: 1.1rem;"><a href="{{ '{{ article.url }}' | url }}">{{ article.data.title }}</a></h3>
+              <h3 class="hero__card-title" style="font-size: 1.1rem;"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
               <div class="news-card__meta" style="border: none; padding: 0;">
                 {{ article.date | dateFormat }}
               </div>
@@ -154,7 +154,7 @@ title: "???????"
       {% for article in popular_news %}
       <div class="popular-item">
         <span class="popular-number">{{ loop.index }}</span>
-        <a href="{{ '{{ article.url }}' | url }}" class="popular-title">{{ article.data.title }}</a>
+        <a href="{{ article.url }}" class="popular-title">{{ article.data.title }}</a>
       </div>
       {% endfor %}
     </div>
@@ -167,14 +167,14 @@ title: "???????"
       {% for article in more_news %}
         <article class="news-card" style="padding: 0; overflow: hidden;">
           {% if article.data.image %}
-          <img src="{{ '{{ article.data.image }}' | url }}" alt="{{ article.data.title }}" style="width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
+          <img src="{{ article.data.image }}" alt="{{ article.data.title }}" style="width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
           {% endif %}
           <div style="padding: 1.8rem; display: flex; flex-direction: column; flex: 1;">
-            <h3 class="hero__card-title"><a href="{{ '{{ article.url }}' | url }}">{{ article.data.title }}</a></h3>
+            <h3 class="hero__card-title"><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
             <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">{{ article.templateContent | excerpt }}</p>
             <div class="news-card__meta" style="margin-top: auto;">
               <span>{{ article.date | dateFormat }}</span>
-              <a href="{{ '{{ article.url }}' | url }}" style="color: var(--accent-color); font-weight: 500;">?????? ?</a>
+              <a href="{{ article.url }}" style="color: var(--accent-color); font-weight: 500;">?????? ?</a>
             </div>
           </div>
         </article>
@@ -208,19 +208,19 @@ title: "???????"
     </style>
     <div class="partners-grid-mobile" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px;">
         
-        <a href="{{ 'https://000585.github.io/com' | url }}" target="_blank" title="????????????? ????? ??????????????? ??? ????????. ?????? ????????????????, ??????????? ?????????, ???? ??????? (CHUDO KRC20)." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '{{ '/img/9xeglw9.jpg' | url }}' | url }}" alt="??????? ????????????" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ 'https://000585.github.io/com' | url }}" target="_blank" title="????????????? ????? ??????????????? ??? ????????. ?????? ????????????????, ??????????? ?????????, ???? ??????? (CHUDO KRC20)." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/9xeglw9.jpg' | url }}" alt="??????? ????????????" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="{{ 'https://000585.github.io/1/?lang=ru' | url }}" target="_blank" title="????????????? ????? «??????????? ??????????????? ????» (???). ?????? ????, ???????????? ????????????????, ???????????? ??????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '{{ '/img/7r8h1.jpg' | url }}' | url }}" alt="???" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ 'https://000585.github.io/1/?lang=ru' | url }}" target="_blank" title="????????????? ????? «??????????? ??????????????? ????» (???). ?????? ????, ???????????? ????????????????, ???????????? ??????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/7r8h1.jpg' | url }}" alt="???" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="{{ 'https://000585.github.io/4/?lang=ru' | url }}" target="_blank" title="??????????? ??????????? ????????????? ????????. ?????? ???? ??????????? ? ??????????? ?????????? ???????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '{{ '/img/kxe6.jpg' | url }}' | url }}" alt="???" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ 'https://000585.github.io/4/?lang=ru' | url }}" target="_blank" title="??????????? ??????????? ????????????? ????????. ?????? ???? ??????????? ? ??????????? ?????????? ???????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/kxe6.jpg' | url }}" alt="???" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="{{ 'https://000585.github.io/2/?lang=ru' | url }}" target="_blank" title="???? «??????????????? ???? ????????»" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '{{ '/img/photo_2026-03-11_09-17-46.jpg' | url }}' | url }}" alt="???? ???" style="width: 100%; height: 100%; object-fit: contain;"></a>
+        <a href="{{ 'https://000585.github.io/2/?lang=ru' | url }}" target="_blank" title="???? «??????????????? ???? ????????»" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-11_09-17-46.jpg' | url }}" alt="???? ???" style="width: 100%; height: 100%; object-fit: contain;"></a>
 
-        <a href="{{ 'https://6900903-ai.github.io/6900903-ai/?lang=ru' | url }}" target="_blank" rel="noopener noreferrer" title="???? ??????? ???????? ????????? ????????????. ????????? ?????, ?????????????? ??????, ?????????? ? ????????? ?????????????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '{{ '/img/photo_2026-03-11_20-04-18.jpg' | url }}' | url }}" alt="???? ??????? ????????" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ 'https://6900903-ai.github.io/6900903-ai/?lang=ru' | url }}" target="_blank" rel="noopener noreferrer" title="???? ??????? ???????? ????????? ????????????. ????????? ?????, ?????????????? ??????, ?????????? ? ????????? ?????????????." style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-11_20-04-18.jpg' | url }}" alt="???? ??????? ????????" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="{{ '{{ '/del/' | url }}' | url }}" title="?????? ??? (??????????. ????????. ?????????)" style="aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; position: relative; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '{{ '/img/photo_2026-03-11_22-37-29.jpg' | url }}' | url }}" alt="?????? ???" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ '/del/' | url }}" title="?????? ??? (??????????. ????????. ?????????)" style="aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; position: relative; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-11_22-37-29.jpg' | url }}" alt="?????? ???" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
-        <a href="{{ '{{ '/chudo/' | url }}' | url }}" title="?????? CHUDO: ?????????????????? ?????????? ? ?????????????" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '{{ '/img/photo_2026-03-12_00-13-33.jpg' | url }}' | url }}" alt="?????? CHUDO" style="width: 100%; height: 100%; object-fit: cover;"></a>
+        <a href="{{ '/chudo/' | url }}" title="?????? CHUDO: ?????????????????? ?????????? ? ?????????????" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#fff'" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)'"><img src="{{ '/img/photo_2026-03-12_00-13-33.jpg' | url }}" alt="?????? CHUDO" style="width: 100%; height: 100%; object-fit: cover;"></a>
 
         <a href="{{ '#' | url }}" style="display: block; position: relative; aspect-ratio: 4/3; height: auto; min-height: 120px; display: flex; justify-content: center; align-items: center; background: rgba(15, 20, 30, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
             
